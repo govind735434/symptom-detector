@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symptom Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Symptom Detector</h1>
+        <form method="post">
+            <textarea name="symptoms" placeholder="Describe your symptoms..." required></textarea>
+            <br>
+            <button type="submit">Detect</button>
+        </form>
+
+        {% if symptoms %}
+            <h2>🔍 Detected Symptoms:</h2>
+            <ul>
+                {% for symptom in symptoms %}
+                    <li>{{ symptom }}</li>
+                {% endfor %}
+            </ul>
+            <h2>🧠 Possible Conditions:</h2>
+            <ul>
+                {% for condition in conditions %}
+                    <li>{{ condition }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    </div>
+</body>
+</html>
